@@ -62,7 +62,7 @@ SayMyNam("Jack Black");
 SayMyName("Anderson Silva");
 SayMyName(undefined);
 
-//default parameters (they have their own scope)
+//default Vrbls (they have their own scope)
 var scope = "outer_function";
 function F(value = scope){
   var scope = "inner_function";
@@ -70,15 +70,15 @@ function F(value = scope){
   return undefined;
 }
 F();
-//Rest parameters --> an alternative to the arguments variable
+//Rest Vrbls --> an alternative to the arguments variable
 function SayThings(voice, ...words){
   console.log(`In the voice of ${voice} i say:\n"${words}".`);
 }
 
 SayThings("Bruce Buffer", "IIIIIIIIT'S TIIIIME", "THE UFC CHAMPIONSHIP", "ANDERSON SILVA ", "VS", "JOSE ALDO");
 
-//rest parameters and spread oporetors
-function sumItAll(...numbers){
+//rest Vrbls and spread oporetors
+function SumItAll(...numbers){
   let i =  0, result = 0;
   for(;i < numbers.length; i++){
     if(typeof numbers[i] == "number"){
@@ -87,13 +87,68 @@ function sumItAll(...numbers){
   }
   return result;
 }
-function randInteger(){
+function RandInteger(){
   return Math.round(Math.random()*1000) % 100 + 1;
 }
-function randIntegerArray(){
-  let i = 0, array = Array(randInteger());
+function RandIntegerArray(){
+  let i = 0, array = Array(RandInteger());
   for(; i < array.length; i++){
-    array[i] = randInteger();
+    array[i] = RandInteger();
   }
   return array;
 }
+  console.log(SumItAll(...RandIntegerArray()));
+  // A better parseInt function
+function parseIntX(Vrbl){
+  var i, vrb = "";
+  switch(typeof Vrbl){
+    case "number":
+      Vrbl = String(parseInt(Vrbl,10));
+      console.log(Vrbl);
+    case "string":
+      for(i = 0; i < Vrbl.length; i++){
+        if(isFinite(parseInt(Vrbl[i]))){
+          if(vrb.length == 0 && Vrbl[i] == 0){}
+          else{
+            vrb += Vrbl[i];
+          }
+        }
+      }
+      Vrbl = parseInt(vrb, 10);
+      break;
+    default:
+      Vrbl = parseInt(Vrbl, 10);
+      break;
+  }
+  return Vrbl;
+}
+console.log(parseIntX("a2b3c123"));
+console.log(parseIntX(012342));
+
+function theBiggestNumber(){
+  var n = 1, count = 0, holder, add;
+  while(isFinite(n)){
+    n *= 10;
+    count++;
+  }
+  console.log(`the biggest number is less than 1xe${count}`);
+  count--;
+  n = 1;
+  holder = count;
+  while(holder > 0){
+    holder--;
+    n *= 10;
+  }
+  console.log(n);
+  holder = count;
+  while(holder > 0){
+    holder--;
+    add = 1*holder;
+    while(isFinite(n + add)){
+      n += add;
+    }
+    console.log(n);
+  }
+  console.log(n);
+}
+theBiggestNumber();
