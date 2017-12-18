@@ -17,7 +17,7 @@ function randInteger(){
   return ( Math.round(Math.random() *1000) % 100 ) + 1;
 }
 
-function randomIntegerArray(){
+function randIntegerArray(){
   var array = [];
   for (let i = 0; i < randInteger(); i++){
     array[i] = randInteger();
@@ -25,4 +25,13 @@ function randomIntegerArray(){
   return array;
 }
 // a little bit of ... operator enhances by ES6
-console.log(sumItAll(...randomIntegerArray()));
+console.log(sumItAll(...randIntegerArray()));
+
+//a function that check if the new
+function changeValue(variable){
+  var newValue
+  do{
+    newValue = randInte
+  }
+
+}
