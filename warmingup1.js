@@ -133,17 +133,12 @@ function theBiggestNumber(){
   }
   console.log(`the biggest number is less than 1xe${count}`);
   count--;
-  n = 1;
+  n = 1*10**count;
   holder = count;
-  while(holder > 0){
-    holder--;
-    n *= 10;
-  }
   console.log(n);
-  holder = count;
   while(holder > 0){
     holder--;
-    add = 1*holder;
+    add = 1*10**holder;
     while(isFinite(n + add)){
       n += add;
     }
@@ -152,3 +147,21 @@ function theBiggestNumber(){
   console.log(n);
 }
 theBiggestNumber();
+
+//making a better eval function;
+function evalX(){
+  var i;
+  for(i = 0; i < arguments.length; i++){
+    if(typeof arguments[i] == "string"){
+      try{
+        eval(arguments[i]);
+      }
+      catch{
+        let j = i + 1;
+        console.log(`argument ${j} raised an error`);
+      }
+    }
+  }
+}
+
+//variable hoisting
