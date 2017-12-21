@@ -188,3 +188,52 @@ var array = F();
 for(let i = 0; i < array.length; i++){
   console.log(array[i]());
 }
+
+//More about clouses
+
+
+var getValue, setValue;
+(function (){
+  var secret = Math.round(Math.random()*100);
+  getValue = function (){
+    return secret;
+  }
+  setValue = function (x){
+    if(isFinite(x)){
+      secret = x;
+      console.log("success");
+    }
+    else{
+      console.error("fail");
+    }
+  }
+})();
+
+//last clouser example:
+
+var setup(datastruct){
+    var i = 0;
+    return function (){
+      if(i < datastruct.length){
+        return datastruct[i++];
+      }
+      else{
+        return undefined;
+      }
+    }
+}
+
+var randArray(){
+  var array = Array(Math.round(Math.random()*100));
+  for(let i =  0; i < array.length; i++){
+    array[i] = Math.round(Math.random()*100);
+  }
+  return array;
+}
+
+var next = setup(randArray());
+var v;
+do{
+  v = next();
+  if(console.log())
+}
