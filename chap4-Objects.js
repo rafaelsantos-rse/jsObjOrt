@@ -3,3 +3,5 @@ function Hero (name, occupation){
     this.occupation = occupation;
 }
 h1 = new Hero("Peto", "SuperGoy");
+
+h2 =  new Hero("Pito", "Cagão");
